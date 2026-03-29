@@ -1,0 +1,362 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "fullName": "Trivy Vulnerability Scanner",
+          "informationUri": "https://github.com/aquasecurity/trivy",
+          "name": "Trivy",
+          "rules": [
+            {
+              "id": "CVE-2026-23831",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "github.com/sigstore/rekor: Rekor denial of service"
+              },
+              "fullDescription": {
+                "text": "Rekor is a software supply chain transparency log. In versions 1.4.3 and below, the entry implementation can panic on attacker-controlled input when canonicalizing a proposed entry with an empty spec.message, causing nil Pointer Dereference. Function validate() returns nil (success) when message is empty, leaving sign1Msg uninitialized, and Canonicalize() later dereferences v.sign1Msg.Payload. A malformed proposed entry of the cose/v0.0.1 type can cause a panic on a thread within the Rekor process. The thread is recovered so the client receives a 500 error message and service still continues, so the availability impact of this is minimal. This issue has been fixed in version 1.5.0."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2026-23831",
+              "help": {
+                "text": "Vulnerability CVE-2026-23831\nSeverity: MEDIUM\nPackage: github.com/sigstore/rekor\nFixed Version: 1.5.0\nLink: [CVE-2026-23831](https://avd.aquasec.com/nvd/cve-2026-23831)\nRekor is a software supply chain transparency log. In versions 1.4.3 and below, the entry implementation can panic on attacker-controlled input when canonicalizing a proposed entry with an empty spec.message, causing nil Pointer Dereference. Function validate() returns nil (success) when message is empty, leaving sign1Msg uninitialized, and Canonicalize() later dereferences v.sign1Msg.Payload. A malformed proposed entry of the cose/v0.0.1 type can cause a panic on a thread within the Rekor process. The thread is recovered so the client receives a 500 error message and service still continues, so the availability impact of this is minimal. This issue has been fixed in version 1.5.0.",
+                "markdown": "**Vulnerability CVE-2026-23831**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|github.com/sigstore/rekor|1.5.0|[CVE-2026-23831](https://avd.aquasec.com/nvd/cve-2026-23831)|\n\nRekor is a software supply chain transparency log. In versions 1.4.3 and below, the entry implementation can panic on attacker-controlled input when canonicalizing a proposed entry with an empty spec.message, causing nil Pointer Dereference. Function validate() returns nil (success) when message is empty, leaving sign1Msg uninitialized, and Canonicalize() later dereferences v.sign1Msg.Payload. A malformed proposed entry of the cose/v0.0.1 type can cause a panic on a thread within the Rekor process. The thread is recovered so the client receives a 500 error message and service still continues, so the availability impact of this is minimal. This issue has been fixed in version 1.5.0."
+              },
+              "properties": {
+                "cvssv3_baseScore": 5.3,
+                "cvssv3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+                "precision": "very-high",
+                "security-severity": "5.3",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-24117",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "Rekor is a software supply chain transparency log. In versions 1.4.3 a ..."
+              },
+              "fullDescription": {
+                "text": "Rekor is a software supply chain transparency log. In versions 1.4.3 and below, attackers can trigger SSRF to arbitrary internal services because /api/v1/index/retrieve supports retrieving a public key via user-provided URL. Since the SSRF only can trigger GET requests, the request cannot mutate state. The response from the GET request is not returned to the caller so data exfiltration is not possible. A malicious actor could attempt to probe an internal network through Blind SSRF. The issue has been fixed in version 1.5.0. To workaround this issue, disable the search endpoint with --enable_retrieve_api=false."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2026-24117",
+              "help": {
+                "text": "Vulnerability CVE-2026-24117\nSeverity: MEDIUM\nPackage: github.com/sigstore/rekor\nFixed Version: 1.5.0\nLink: [CVE-2026-24117](https://avd.aquasec.com/nvd/cve-2026-24117)\nRekor is a software supply chain transparency log. In versions 1.4.3 and below, attackers can trigger SSRF to arbitrary internal services because /api/v1/index/retrieve supports retrieving a public key via user-provided URL. Since the SSRF only can trigger GET requests, the request cannot mutate state. The response from the GET request is not returned to the caller so data exfiltration is not possible. A malicious actor could attempt to probe an internal network through Blind SSRF. The issue has been fixed in version 1.5.0. To workaround this issue, disable the search endpoint with --enable_retrieve_api=false.",
+                "markdown": "**Vulnerability CVE-2026-24117**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|github.com/sigstore/rekor|1.5.0|[CVE-2026-24117](https://avd.aquasec.com/nvd/cve-2026-24117)|\n\nRekor is a software supply chain transparency log. In versions 1.4.3 and below, attackers can trigger SSRF to arbitrary internal services because /api/v1/index/retrieve supports retrieving a public key via user-provided URL. Since the SSRF only can trigger GET requests, the request cannot mutate state. The response from the GET request is not returned to the caller so data exfiltration is not possible. A malicious actor could attempt to probe an internal network through Blind SSRF. The issue has been fixed in version 1.5.0. To workaround this issue, disable the search endpoint with --enable_retrieve_api=false."
+              },
+              "properties": {
+                "cvssv3_baseScore": 5.3,
+                "cvssv3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+                "precision": "very-high",
+                "security-severity": "5.3",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-24137",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "sigstore legacy TUF client allows for arbitrary file writes with target cache path traversal"
+              },
+              "fullDescription": {
+                "text": "sigstore framework is a common go library shared across sigstore services and clients. In versions 1.10.3 and below, the legacy TUF client (pkg/tuf/client.go) supports caching target files to disk. It constructs a filesystem path by joining a cache base directory with a target name sourced from signed target metadata; however, it does not validate that the resulting path stays within the cache base directory. A malicious TUF repository can trigger arbitrary file overwriting, limited to the permissions that the calling process has. Note that this should only affect clients that are directly using the TUF client in sigstore/sigstore or are using an older version of Cosign. Public Sigstore deployment users are unaffected, as TUF metadata is validated by a quorum of trusted collaborators. This issue has been fixed in version 1.10.4. As a workaround, users can disable disk caching for the legacy client by setting SIGSTORE_NO_CACHE=true in the environment, migrate to https://github.com/sigstore/sigstore-go/tree/main/pkg/tuf, or upgrade to the latest sigstore/sigstore release."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2026-24137",
+              "help": {
+                "text": "Vulnerability CVE-2026-24137\nSeverity: MEDIUM\nPackage: github.com/sigstore/sigstore\nFixed Version: 1.10.4\nLink: [CVE-2026-24137](https://avd.aquasec.com/nvd/cve-2026-24137)\nsigstore framework is a common go library shared across sigstore services and clients. In versions 1.10.3 and below, the legacy TUF client (pkg/tuf/client.go) supports caching target files to disk. It constructs a filesystem path by joining a cache base directory with a target name sourced from signed target metadata; however, it does not validate that the resulting path stays within the cache base directory. A malicious TUF repository can trigger arbitrary file overwriting, limited to the permissions that the calling process has. Note that this should only affect clients that are directly using the TUF client in sigstore/sigstore or are using an older version of Cosign. Public Sigstore deployment users are unaffected, as TUF metadata is validated by a quorum of trusted collaborators. This issue has been fixed in version 1.10.4. As a workaround, users can disable disk caching for the legacy client by setting SIGSTORE_NO_CACHE=true in the environment, migrate to https://github.com/sigstore/sigstore-go/tree/main/pkg/tuf, or upgrade to the latest sigstore/sigstore release.",
+                "markdown": "**Vulnerability CVE-2026-24137**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|github.com/sigstore/sigstore|1.10.4|[CVE-2026-24137](https://avd.aquasec.com/nvd/cve-2026-24137)|\n\nsigstore framework is a common go library shared across sigstore services and clients. In versions 1.10.3 and below, the legacy TUF client (pkg/tuf/client.go) supports caching target files to disk. It constructs a filesystem path by joining a cache base directory with a target name sourced from signed target metadata; however, it does not validate that the resulting path stays within the cache base directory. A malicious TUF repository can trigger arbitrary file overwriting, limited to the permissions that the calling process has. Note that this should only affect clients that are directly using the TUF client in sigstore/sigstore or are using an older version of Cosign. Public Sigstore deployment users are unaffected, as TUF metadata is validated by a quorum of trusted collaborators. This issue has been fixed in version 1.10.4. As a workaround, users can disable disk caching for the legacy client by setting SIGSTORE_NO_CACHE=true in the environment, migrate to https://github.com/sigstore/sigstore-go/tree/main/pkg/tuf, or upgrade to the latest sigstore/sigstore release."
+              },
+              "properties": {
+                "cvssv3_baseScore": 5.8,
+                "cvssv3_vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:N/I:H/A:N",
+                "precision": "very-high",
+                "security-severity": "5.8",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-23991",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "go-tuf is a Go implementation of The Update Framework (TUF). Starting  ..."
+              },
+              "fullDescription": {
+                "text": "go-tuf is a Go implementation of The Update Framework (TUF). Starting in version 2.0.0 and prior to version 2.3.1, if the TUF repository (or any of its mirrors) returns invalid TUF metadata JSON (valid JSON but not well formed TUF metadata), the client will panic during parsing, causing a denial of service. The panic happens before any signature is validated. This means that a compromised repository/mirror/cache can DoS clients without having access to any signing key. Version 2.3.1 fixes the issue. No known workarounds are available."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2026-23991",
+              "help": {
+                "text": "Vulnerability CVE-2026-23991\nSeverity: MEDIUM\nPackage: github.com/theupdateframework/go-tuf/v2\nFixed Version: 2.3.1\nLink: [CVE-2026-23991](https://avd.aquasec.com/nvd/cve-2026-23991)\ngo-tuf is a Go implementation of The Update Framework (TUF). Starting in version 2.0.0 and prior to version 2.3.1, if the TUF repository (or any of its mirrors) returns invalid TUF metadata JSON (valid JSON but not well formed TUF metadata), the client will panic during parsing, causing a denial of service. The panic happens before any signature is validated. This means that a compromised repository/mirror/cache can DoS clients without having access to any signing key. Version 2.3.1 fixes the issue. No known workarounds are available.",
+                "markdown": "**Vulnerability CVE-2026-23991**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|github.com/theupdateframework/go-tuf/v2|2.3.1|[CVE-2026-23991](https://avd.aquasec.com/nvd/cve-2026-23991)|\n\ngo-tuf is a Go implementation of The Update Framework (TUF). Starting in version 2.0.0 and prior to version 2.3.1, if the TUF repository (or any of its mirrors) returns invalid TUF metadata JSON (valid JSON but not well formed TUF metadata), the client will panic during parsing, causing a denial of service. The panic happens before any signature is validated. This means that a compromised repository/mirror/cache can DoS clients without having access to any signing key. Version 2.3.1 fixes the issue. No known workarounds are available."
+              },
+              "properties": {
+                "cvssv3_baseScore": 5.9,
+                "cvssv3_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "precision": "very-high",
+                "security-severity": "5.9",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-23992",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "go-tuf is a Go implementation of The Update Framework (TUF). Starting  ..."
+              },
+              "fullDescription": {
+                "text": "go-tuf is a Go implementation of The Update Framework (TUF). Starting in version 2.0.0 and prior to version 2.3.1, a compromised or misconfigured TUF repository can have the configured value of signature thresholds set to 0, which effectively disables signature verification. This can lead to unauthorized modification to TUF metadata files is possible at rest, or during transit as no integrity checks are made. Version 2.3.1 fixes the issue. As a workaround, always make sure that the TUF metadata roles are configured with a threshold of at least 1."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2026-23992",
+              "help": {
+                "text": "Vulnerability CVE-2026-23992\nSeverity: MEDIUM\nPackage: github.com/theupdateframework/go-tuf/v2\nFixed Version: 2.3.1\nLink: [CVE-2026-23992](https://avd.aquasec.com/nvd/cve-2026-23992)\ngo-tuf is a Go implementation of The Update Framework (TUF). Starting in version 2.0.0 and prior to version 2.3.1, a compromised or misconfigured TUF repository can have the configured value of signature thresholds set to 0, which effectively disables signature verification. This can lead to unauthorized modification to TUF metadata files is possible at rest, or during transit as no integrity checks are made. Version 2.3.1 fixes the issue. As a workaround, always make sure that the TUF metadata roles are configured with a threshold of at least 1.",
+                "markdown": "**Vulnerability CVE-2026-23992**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|github.com/theupdateframework/go-tuf/v2|2.3.1|[CVE-2026-23992](https://avd.aquasec.com/nvd/cve-2026-23992)|\n\ngo-tuf is a Go implementation of The Update Framework (TUF). Starting in version 2.0.0 and prior to version 2.3.1, a compromised or misconfigured TUF repository can have the configured value of signature thresholds set to 0, which effectively disables signature verification. This can lead to unauthorized modification to TUF metadata files is possible at rest, or during transit as no integrity checks are made. Version 2.3.1 fixes the issue. As a workaround, always make sure that the TUF metadata roles are configured with a threshold of at least 1."
+              },
+              "properties": {
+                "cvssv3_baseScore": 5.9,
+                "cvssv3_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+                "precision": "very-high",
+                "security-severity": "5.9",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-24686",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "go-tuf Path Traversal in TAP 4 Multirepo Client Allows Arbitrary File Write via Malicious Repository Names"
+              },
+              "fullDescription": {
+                "text": "# Security Vulnerability: Path Traversal in TAP 4 Multirepo Client\n\n## Summary\n\ngo-tuf's TAP 4 Multirepo Client uses the map file repository name string (`repoName`) as a filesystem path component when selecting the local metadata cache directory. If an application accepts a map file from an untrusted source, an attacker can supply a `repoName` containing traversal (e.g., `../escaped-repo`) and cause go-tuf to create directories and write the root metadata file outside the intended `LocalMetadataDir` cache base, within the running process's filesystem permissions.\n\n## Affected Component\n\n| Field | Value |\n|-------|-------|\n| **File** | `metadata/multirepo/multirepo.go` |\n| **Function** | `(*MultiRepoClient) initTUFClients() error` |\n| **Callsite** | `metadataDir := filepath.Join(client.Config.LocalMetadataDir, repoName)` (around line 129 at the pinned commit) |\n\n## Impact\n\nWhen the TAP 4 map file content is attacker-controlled, this enables arbitrary file write relative to the process permissions (via metadata persistence during client initialization). This can be used to overwrite files writable by the process (for example, configuration files in writable directories) and may enable further compromise depending on the deployment environment.\n\n\u003e **Note:** Exploitability is deployment-dependent. If the map file is always local and trusted (not attacker-controlled), this reduces to a misconfiguration risk rather than a remotely triggerable issue.\n\n## Attacker Model\n\n- Attacker can cause the application to load a TAP 4 map file whose `repositories` keys are attacker-controlled (for example: fetched from a URL, supply-chain substituted, or otherwise attacker-influenced input).\n- Local caching is enabled (`DisableLocalCache=false`) and the configured `LocalMetadataDir` is writable by the running process.\n\n**Claim Ceiling:** HIGH when the map file is attacker-controlled; if the map file is always local and trusted, this is closer to a configuration footgun and likely lands as MEDIUM/LOW.\n\n| Field | Value |\n|-------|-------|\n| **Affected Versions** | ≤ 2.4.0 |\n| **Verified On** | Commit `bde5f18dc95dfac365fc452ee4e278e5fd66d4b4` (tag v2.4.0) |\n\n\u003e **Note:** First affected version has not been bisected.\n\n## Reproduction\n\nAttachments include `poc.zip` with:\n- `canonical.log` (contains `[CALLSITE_HIT]`, `[PROOF_MARKER]`)\n- `control.log` (contains `[CALLSITE_HIT]`, `[NC_MARKER]`, does not contain `[PROOF_MARKER]`)\n- `fix.patch` (minimal validation sketch)\n\n**Expected:** Multirepo repository names are treated as identifiers; a TAP 4 map file containing traversal or absolute paths is rejected (or safely normalized so that all writes stay under `LocalMetadataDir`).\n\n**Actual:** A traversal `repoName` escapes `LocalMetadataDir` and go-tuf persists `root.json` under the escaped path during initialization.\n\n### Run Local Repro\n\n```bash\nrm -rf _poc\nmkdir -p _poc\nunzip -q -o poc.zip -d _poc\ncd _poc/poc\nmake canonical\nmake control\n```\n\n## Workarounds\n\n1. Treat TAP 4 map files as trusted configuration only (do not fetch from untrusted sources).\n2. Validate repo names before passing the map file to go-tuf (reject absolute paths, path separators, and traversal components like `.` / `..`).\n3. If acceptable for the application, disable local caching to avoid writing metadata to disk (`DisableLocalCache=true`).\n\n## Suggested Remediation\n\nValidate multirepo repository names as identifiers (not paths) before using them in `filepath.Join`. Reject:\n- Absolute paths\n- Path separators (`/` and `\\`)\n- Traversal components (`.` and `..`)\n\nIf it is important to accept a wider set of repo names, a safer alternative is to map repo names to a stable, validated directory name (for example via encoding or hashing) and to ensure all writes stay under the cache base directory.\n\n## Triage Questions\n\n1. Is the TAP 4 map file expected to ever be fetched from untrusted sources in supported deployments?\n2. Should invalid repo names be treated as a hard error (reject initialization), or as a soft error (skip that repository entry)?\n\n## Attachments\n\n- [poc.zip](https://github.com/user-attachments/files/24849854/poc.zip)\n- [addendum.md](https://github.com/user-attachments/files/24849855/addendum.md)\n- [e2e.zip](https://github.com/user-attachments/files/24849856/e2e.zip)\n- [PR_DESCRIPTION.md](https://github.com/user-attachments/files/24849858/PR_DESCRIPTION.md)\n\n---\n\n*Reported by: Oleh*"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2026-24686",
+              "help": {
+                "text": "Vulnerability CVE-2026-24686\nSeverity: MEDIUM\nPackage: github.com/theupdateframework/go-tuf/v2\nFixed Version: 2.4.1\nLink: [CVE-2026-24686](https://avd.aquasec.com/nvd/cve-2026-24686)\n# Security Vulnerability: Path Traversal in TAP 4 Multirepo Client\n\n## Summary\n\ngo-tuf's TAP 4 Multirepo Client uses the map file repository name string (`repoName`) as a filesystem path component when selecting the local metadata cache directory. If an application accepts a map file from an untrusted source, an attacker can supply a `repoName` containing traversal (e.g., `../escaped-repo`) and cause go-tuf to create directories and write the root metadata file outside the intended `LocalMetadataDir` cache base, within the running process's filesystem permissions.\n\n## Affected Component\n\n| Field | Value |\n|-------|-------|\n| **File** | `metadata/multirepo/multirepo.go` |\n| **Function** | `(*MultiRepoClient) initTUFClients() error` |\n| **Callsite** | `metadataDir := filepath.Join(client.Config.LocalMetadataDir, repoName)` (around line 129 at the pinned commit) |\n\n## Impact\n\nWhen the TAP 4 map file content is attacker-controlled, this enables arbitrary file write relative to the process permissions (via metadata persistence during client initialization). This can be used to overwrite files writable by the process (for example, configuration files in writable directories) and may enable further compromise depending on the deployment environment.\n\n\u003e **Note:** Exploitability is deployment-dependent. If the map file is always local and trusted (not attacker-controlled), this reduces to a misconfiguration risk rather than a remotely triggerable issue.\n\n## Attacker Model\n\n- Attacker can cause the application to load a TAP 4 map file whose `repositories` keys are attacker-controlled (for example: fetched from a URL, supply-chain substituted, or otherwise attacker-influenced input).\n- Local caching is enabled (`DisableLocalCache=false`) and the configured `LocalMetadataDir` is writable by the running process.\n\n**Claim Ceiling:** HIGH when the map file is attacker-controlled; if the map file is always local and trusted, this is closer to a configuration footgun and likely lands as MEDIUM/LOW.\n\n| Field | Value |\n|-------|-------|\n| **Affected Versions** | ≤ 2.4.0 |\n| **Verified On** | Commit `bde5f18dc95dfac365fc452ee4e278e5fd66d4b4` (tag v2.4.0) |\n\n\u003e **Note:** First affected version has not been bisected.\n\n## Reproduction\n\nAttachments include `poc.zip` with:\n- `canonical.log` (contains `[CALLSITE_HIT]`, `[PROOF_MARKER]`)\n- `control.log` (contains `[CALLSITE_HIT]`, `[NC_MARKER]`, does not contain `[PROOF_MARKER]`)\n- `fix.patch` (minimal validation sketch)\n\n**Expected:** Multirepo repository names are treated as identifiers; a TAP 4 map file containing traversal or absolute paths is rejected (or safely normalized so that all writes stay under `LocalMetadataDir`).\n\n**Actual:** A traversal `repoName` escapes `LocalMetadataDir` and go-tuf persists `root.json` under the escaped path during initialization.\n\n### Run Local Repro\n\n```bash\nrm -rf _poc\nmkdir -p _poc\nunzip -q -o poc.zip -d _poc\ncd _poc/poc\nmake canonical\nmake control\n```\n\n## Workarounds\n\n1. Treat TAP 4 map files as trusted configuration only (do not fetch from untrusted sources).\n2. Validate repo names before passing the map file to go-tuf (reject absolute paths, path separators, and traversal components like `.` / `..`).\n3. If acceptable for the application, disable local caching to avoid writing metadata to disk (`DisableLocalCache=true`).\n\n## Suggested Remediation\n\nValidate multirepo repository names as identifiers (not paths) before using them in `filepath.Join`. Reject:\n- Absolute paths\n- Path separators (`/` and `\\`)\n- Traversal components (`.` and `..`)\n\nIf it is important to accept a wider set of repo names, a safer alternative is to map repo names to a stable, validated directory name (for example via encoding or hashing) and to ensure all writes stay under the cache base directory.\n\n## Triage Questions\n\n1. Is the TAP 4 map file expected to ever be fetched from untrusted sources in supported deployments?\n2. Should invalid repo names be treated as a hard error (reject initialization), or as a soft error (skip that repository entry)?\n\n## Attachments\n\n- [poc.zip](https://github.com/user-attachments/files/24849854/poc.zip)\n- [addendum.md](https://github.com/user-attachments/files/24849855/addendum.md)\n- [e2e.zip](https://github.com/user-attachments/files/24849856/e2e.zip)\n- [PR_DESCRIPTION.md](https://github.com/user-attachments/files/24849858/PR_DESCRIPTION.md)\n\n---\n\n*Reported by: Oleh*",
+                "markdown": "**Vulnerability CVE-2026-24686**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|github.com/theupdateframework/go-tuf/v2|2.4.1|[CVE-2026-24686](https://avd.aquasec.com/nvd/cve-2026-24686)|\n\n# Security Vulnerability: Path Traversal in TAP 4 Multirepo Client\n\n## Summary\n\ngo-tuf's TAP 4 Multirepo Client uses the map file repository name string (`repoName`) as a filesystem path component when selecting the local metadata cache directory. If an application accepts a map file from an untrusted source, an attacker can supply a `repoName` containing traversal (e.g., `../escaped-repo`) and cause go-tuf to create directories and write the root metadata file outside the intended `LocalMetadataDir` cache base, within the running process's filesystem permissions.\n\n## Affected Component\n\n| Field | Value |\n|-------|-------|\n| **File** | `metadata/multirepo/multirepo.go` |\n| **Function** | `(*MultiRepoClient) initTUFClients() error` |\n| **Callsite** | `metadataDir := filepath.Join(client.Config.LocalMetadataDir, repoName)` (around line 129 at the pinned commit) |\n\n## Impact\n\nWhen the TAP 4 map file content is attacker-controlled, this enables arbitrary file write relative to the process permissions (via metadata persistence during client initialization). This can be used to overwrite files writable by the process (for example, configuration files in writable directories) and may enable further compromise depending on the deployment environment.\n\n\u003e **Note:** Exploitability is deployment-dependent. If the map file is always local and trusted (not attacker-controlled), this reduces to a misconfiguration risk rather than a remotely triggerable issue.\n\n## Attacker Model\n\n- Attacker can cause the application to load a TAP 4 map file whose `repositories` keys are attacker-controlled (for example: fetched from a URL, supply-chain substituted, or otherwise attacker-influenced input).\n- Local caching is enabled (`DisableLocalCache=false`) and the configured `LocalMetadataDir` is writable by the running process.\n\n**Claim Ceiling:** HIGH when the map file is attacker-controlled; if the map file is always local and trusted, this is closer to a configuration footgun and likely lands as MEDIUM/LOW.\n\n| Field | Value |\n|-------|-------|\n| **Affected Versions** | ≤ 2.4.0 |\n| **Verified On** | Commit `bde5f18dc95dfac365fc452ee4e278e5fd66d4b4` (tag v2.4.0) |\n\n\u003e **Note:** First affected version has not been bisected.\n\n## Reproduction\n\nAttachments include `poc.zip` with:\n- `canonical.log` (contains `[CALLSITE_HIT]`, `[PROOF_MARKER]`)\n- `control.log` (contains `[CALLSITE_HIT]`, `[NC_MARKER]`, does not contain `[PROOF_MARKER]`)\n- `fix.patch` (minimal validation sketch)\n\n**Expected:** Multirepo repository names are treated as identifiers; a TAP 4 map file containing traversal or absolute paths is rejected (or safely normalized so that all writes stay under `LocalMetadataDir`).\n\n**Actual:** A traversal `repoName` escapes `LocalMetadataDir` and go-tuf persists `root.json` under the escaped path during initialization.\n\n### Run Local Repro\n\n```bash\nrm -rf _poc\nmkdir -p _poc\nunzip -q -o poc.zip -d _poc\ncd _poc/poc\nmake canonical\nmake control\n```\n\n## Workarounds\n\n1. Treat TAP 4 map files as trusted configuration only (do not fetch from untrusted sources).\n2. Validate repo names before passing the map file to go-tuf (reject absolute paths, path separators, and traversal components like `.` / `..`).\n3. If acceptable for the application, disable local caching to avoid writing metadata to disk (`DisableLocalCache=true`).\n\n## Suggested Remediation\n\nValidate multirepo repository names as identifiers (not paths) before using them in `filepath.Join`. Reject:\n- Absolute paths\n- Path separators (`/` and `\\`)\n- Traversal components (`.` and `..`)\n\nIf it is important to accept a wider set of repo names, a safer alternative is to map repo names to a stable, validated directory name (for example via encoding or hashing) and to ensure all writes stay under the cache base directory.\n\n## Triage Questions\n\n1. Is the TAP 4 map file expected to ever be fetched from untrusted sources in supported deployments?\n2. Should invalid repo names be treated as a hard error (reject initialization), or as a soft error (skip that repository entry)?\n\n## Attachments\n\n- [poc.zip](https://github.com/user-attachments/files/24849854/poc.zip)\n- [addendum.md](https://github.com/user-attachments/files/24849855/addendum.md)\n- [e2e.zip](https://github.com/user-attachments/files/24849856/e2e.zip)\n- [PR_DESCRIPTION.md](https://github.com/user-attachments/files/24849858/PR_DESCRIPTION.md)\n\n---\n\n*Reported by: Oleh*"
+              },
+              "properties": {
+                "cvssv3_baseScore": 4.7,
+                "cvssv3_vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+                "precision": "very-high",
+                "security-severity": "4.7",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            }
+          ],
+          "version": "0.67.2"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CVE-2026-23831",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Package: github.com/sigstore/rekor\nInstalled Version: v1.4.3\nVulnerability CVE-2026-23831\nSeverity: MEDIUM\nFixed Version: 1.5.0\nLink: [CVE-2026-23831](https://avd.aquasec.com/nvd/cve-2026-23831)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": ": github.com/sigstore/rekor@v1.4.3"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-24117",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Package: github.com/sigstore/rekor\nInstalled Version: v1.4.3\nVulnerability CVE-2026-24117\nSeverity: MEDIUM\nFixed Version: 1.5.0\nLink: [CVE-2026-24117](https://avd.aquasec.com/nvd/cve-2026-24117)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": ": github.com/sigstore/rekor@v1.4.3"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-24137",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Package: github.com/sigstore/sigstore\nInstalled Version: v1.10.3\nVulnerability CVE-2026-24137\nSeverity: MEDIUM\nFixed Version: 1.10.4\nLink: [CVE-2026-24137](https://avd.aquasec.com/nvd/cve-2026-24137)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": ": github.com/sigstore/sigstore@v1.10.3"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-23991",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Package: github.com/theupdateframework/go-tuf/v2\nInstalled Version: v2.3.0\nVulnerability CVE-2026-23991\nSeverity: MEDIUM\nFixed Version: 2.3.1\nLink: [CVE-2026-23991](https://avd.aquasec.com/nvd/cve-2026-23991)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": ": github.com/theupdateframework/go-tuf/v2@v2.3.0"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-23992",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "Package: github.com/theupdateframework/go-tuf/v2\nInstalled Version: v2.3.0\nVulnerability CVE-2026-23992\nSeverity: MEDIUM\nFixed Version: 2.3.1\nLink: [CVE-2026-23992](https://avd.aquasec.com/nvd/cve-2026-23992)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": ": github.com/theupdateframework/go-tuf/v2@v2.3.0"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-24686",
+          "ruleIndex": 5,
+          "level": "warning",
+          "message": {
+            "text": "Package: github.com/theupdateframework/go-tuf/v2\nInstalled Version: v2.3.0\nVulnerability CVE-2026-24686\nSeverity: MEDIUM\nFixed Version: 2.4.1\nLink: [CVE-2026-24686](https://avd.aquasec.com/nvd/cve-2026-24686)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": ": github.com/theupdateframework/go-tuf/v2@v2.3.0"
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits",
+      "originalUriBaseIds": {
+        "ROOTPATH": {
+          "uri": "file:///"
+        }
+      }
+    }
+  ]
+}

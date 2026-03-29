@@ -1,0 +1,32 @@
+name: release
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    env:
+      IMAGE_NAME: demo-app
+      IMAGE_TAG: ${{ github.sha }}
+      REGISTRY: ttl.sh
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t ${REGISTRY}/${IMAGE_NAME}-${IMAGE_TAG}:1h ./app
+
+      - name: Push to ttl.sh
+        id: push_image
+        run: |
+          docker push ${REGISTRY}/${IMAGE_NAME}-${IMAGE_TAG}:1h
+
+      - name: Show pushed image name
+        if: ${{ steps.push_image.outcome == 'success' }}
+        run: echo "Image available at ${REGISTRY}/${IMAGE_NAME}-${IMAGE_TAG}:1h"
